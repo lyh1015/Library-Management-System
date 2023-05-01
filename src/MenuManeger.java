@@ -17,7 +17,8 @@ public class MenuManeger {
 		System.out.println("6.Exit");
 		System.out.println("Select one number between 1-5:");
 		num=input.nextInt();
-		if(num==1) {
+		switch(num) {
+		case 1:
 			System.out.print("Book Name:");
 			String Bookname=input.nextLine();
 			input.nextLine();
@@ -25,8 +26,13 @@ public class MenuManeger {
 			String BookAuthor=input.nextLine();
 			System.out.print("Book Publisher:");
 			String BookPublisher=input.nextLine();
+			break;
+		case 2:
+		case 3:
+		case 4:
 			
 			
+		
 		}
 		}
 	}
