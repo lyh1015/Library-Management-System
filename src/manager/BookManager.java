@@ -21,8 +21,8 @@ public class BookManager {
 		while(type!=1 &&type!=2&&type!=3&&type!=4) {
 		System.out.println("1.for General:");
 		System.out.println("2.for ReligionBook:");
-		System.out.println("2.for LanguageBook:");
-		System.out.println("2.for HistoryBook:");
+		System.out.println("3.for LanguageBook:");
+		System.out.println("4.for HistoryBook:");
 		System.out.println("Select num for Book type(1 ~ 4):");
 		type=input.nextInt();
 		if(type==1) {
@@ -55,32 +55,31 @@ public class BookManager {
 		}				
 	}
 	public void deleteBook() {
-		
+		input.nextLine();
 		System.out.print("Book name:");
 		String bookname=input.nextLine();
-		input.nextLine();
 		int index=-1;
 		for(int i=0;i<books.size();i++) {
-			if(books.get(i).getName()==bookname) {
+			if(books.get(i).getName().equals(bookname)) {
 				index=i;
 				break;
 			}
 		}
 		if(index>=0) {
 			books.remove(index);
-			System.out.println("the book has not been registered");
+			System.out.println("This book has been deleted.");
 			return;
 		}
 	
 
 }
 	public void editBook() {
-		
+		input.nextLine();
 		System.out.print("Book name:");
 		String bookname=input.nextLine();
 		for(int i=0;i<books.size();i++) {
 			Book book=books.get(i);
-			if(book.getName()==bookname) {
+			if(book.getName().equals(bookname)) {
 				int num=-1;
 				while(num!=4) {
 					System.out.println("--Book Info Edit Menu--");
@@ -90,18 +89,22 @@ public class BookManager {
 					System.out.println("4.Exit");
 					System.out.println("Select one number between 1~4:");
 					num=input.nextInt();
+			
 					if(num==1) {
-						System.out.print("Book name:");
+					    input.nextLine();
+						System.out.println("Book name:");
 						String name=input.nextLine();	
 						book.setName(name);
 					}
 					else if(num==2) {
-						System.out.print("Book Author:");
+						input.nextLine();
+						System.out.println("Book Author:");
 						String author=input.nextLine();
 						book.setAuthor(author);
 					}
 					else if(num==3) {
-						System.out.print("Book Publisher:");
+						input.nextLine();
+						System.out.println("Book Publisher:");
 						String publisher=input.nextLine();
 						book.setPublisher(publisher);
 					}
