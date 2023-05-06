@@ -1,7 +1,11 @@
+package manager;
 import java.util.Scanner;
 
 import book.Book;
 import book.GeneralBook;
+import book.HistoryBook;
+import book.LanguageBook;
+import book.ReligionBook;
 
 import java.util.ArrayList;
 
@@ -14,25 +18,39 @@ public class BookManager {
 	public void addBook() {
 		int type=0;
 		Book book;
-		while(type!=1 &&type!=2) {
-		System.out.print("1.for General:");
-		System.out.println("2.for Philosophy:");
-		System.out.print("Select num for Book type(1 or 2):");
+		while(type!=1 &&type!=2&&type!=3&&type!=4) {
+		System.out.println("1.for General:");
+		System.out.println("2.for ReligionBook:");
+		System.out.println("2.for LanguageBook:");
+		System.out.println("2.for HistoryBook:");
+		System.out.println("Select num for Book type(1 ~ 4):");
 		type=input.nextInt();
 		if(type==1) {
-			book=new Book();
+			book=new GeneralBook();
 			book.getBookInput(input);
 			books.add(book);
 		    break;
 		}
 		else if(type==2) {
-			book=new GeneralBook();
+			book=new ReligionBook();
+			book.getBookInput(input);
+			books.add(book);
+			break;
+		}
+		else if(type==3) {
+			book=new LanguageBook();
+			book.getBookInput(input);
+			books.add(book);
+			break;
+		}
+		else if(type==4) {
+			book=new HistoryBook();
 			book.getBookInput(input);
 			books.add(book);
 			break;
 		}
 		else {
-			System.out.print("Select num for Booktype between 1 and 2");
+			System.out.print("Select num for Booktype between 1 ~ 4");
 		}
 		}				
 	}

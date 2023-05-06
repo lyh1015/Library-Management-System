@@ -3,7 +3,7 @@ package book;
 import java.util.Scanner;
 
 public class Book {
-	protected Booktype type=Booktype.General;
+	protected String type;
 	protected String name;
 	protected String author;
 	protected String publisher;
@@ -14,13 +14,22 @@ public class Book {
 		this.publisher=publisher;
 		
 	}
+	public Book(String type,String name,String author,String publisher) {
+		this.type=type;
+		this.name=name;
+		this.author=author;
+		this.publisher=publisher;
+		
+	}
+	
+	
 	public Book() {
 		
 	}
-	public Booktype getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(Booktype type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public String getName() {
@@ -41,12 +50,17 @@ public class Book {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
+	
+	
 	public  void printInfo() {
-		System.out.println("Book name:"+this.name+"//Book author:"+author +"//Book publisher:"+publisher);
+	
+		System.out.println("Type:"+this.type+" //Book name:"+this.name+" //Book author:"+author +" //Book publisher:"+publisher);
 	
 	}
 	public void getBookInput(Scanner input) {
 		input.nextLine();
+		System.out.print("Type:");
+		String type=input.nextLine();
 		System.out.print("Book name:");
 		String name=input.nextLine();	
 		this.setName(name);
