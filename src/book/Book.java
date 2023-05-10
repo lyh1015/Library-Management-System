@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class Book {
+public abstract class Book {
 	protected String type;
 	protected String name;
 	protected String author;
@@ -52,11 +52,8 @@ public class Book {
 	}
 	
 	
-	public  void printInfo() {
+	public abstract void printInfo(); 
 	
-		System.out.println("Type:"+this.type+" //Book name:"+this.name+" //Book author:"+author +" //Book publisher:"+publisher);
-	
-	}
 	public void getBookInput(Scanner input) {
 		input.nextLine();
 		System.out.print("Type:");

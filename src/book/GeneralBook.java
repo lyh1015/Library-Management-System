@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class GeneralBook extends Book{
+public class GeneralBook extends Book implements BookInput{
 	public String etctype;
 	
 	public void setetcType(String etctype) {

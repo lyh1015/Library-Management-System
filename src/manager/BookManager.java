@@ -2,6 +2,8 @@ package manager;
 import java.util.Scanner;
 
 import book.Book;
+import book.BookInput;
+import book.ComicBook;
 import book.GeneralBook;
 import book.HistoryBook;
 import book.LanguageBook;
@@ -10,20 +12,21 @@ import book.ReligionBook;
 import java.util.ArrayList;
 
 public class BookManager {
-	ArrayList<Book> books=new ArrayList<Book>();	 	
+	ArrayList<BookInput> books=new ArrayList<BookInput>();	 	
 	Scanner input;
 	BookManager(Scanner input){
 		this.input=input;
 	}
 	public void addBook() {
 		int type=0;
-		Book book;
+		BookInput book;
 		while(type!=1 &&type!=2&&type!=3&&type!=4) {
 		System.out.println("1.for General:");
 		System.out.println("2.for ReligionBook:");
 		System.out.println("3.for LanguageBook:");
 		System.out.println("4.for HistoryBook:");
-		System.out.println("Select num for Book type(1 ~ 4):");
+		System.out.println("5.for ComicBook:");
+		System.out.println("Select num for Book type(1 ~ 5):");
 		type=input.nextInt();
 		if(type==1) {
 			book=new GeneralBook();
@@ -49,8 +52,14 @@ public class BookManager {
 			books.add(book);
 			break;
 		}
+		else if(type==5) {
+			book=new ComicBook();
+			book.getBookInput(input);
+			books.add(book);
+			break;
+		}
 		else {
-			System.out.print("Select num for Booktype between 1 ~ 4");
+			System.out.print("Select num for Booktype between 1 ~ 5");
 		}
 		}				
 	}
@@ -78,8 +87,8 @@ public class BookManager {
 		System.out.print("Book name:");
 		String bookname=input.nextLine();
 		for(int i=0;i<books.size();i++) {
-			Book book=books.get(i);
-			if(book.getName().equals(bookname)) {
+			BookInput bookInput=books.get(i);
+			if(bookInput.getName().equals(bookname)) {
 				int num=-1;
 				while(num!=4) {
 					System.out.println("--Book Info Edit Menu--");
@@ -94,19 +103,19 @@ public class BookManager {
 					    input.nextLine();
 						System.out.println("Book name:");
 						String name=input.nextLine();	
-						book.setName(name);
+						bookInput.setName(name);
 					}
 					else if(num==2) {
 						input.nextLine();
 						System.out.println("Book Author:");
 						String author=input.nextLine();
-						book.setAuthor(author);
+						bookInput.setAuthor(author);
 					}
 					else if(num==3) {
 						input.nextLine();
 						System.out.println("Book Publisher:");
 						String publisher=input.nextLine();
-						book.setPublisher(publisher);
+						bookInput.setPublisher(publisher);
 					}
 					else {
 						continue;

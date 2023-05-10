@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class HistoryBook extends Book {
+public class HistoryBook extends Book implements BookInput{
 String Historytype;
 	
 	public void sethtype(String Historytype) {

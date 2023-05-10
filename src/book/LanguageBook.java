@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class LanguageBook extends Book {
+public class LanguageBook extends Book implements BookInput{
 String Languagetype;
 	
 	public void setltype(String Languagetype) {

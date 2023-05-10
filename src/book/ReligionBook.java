@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class ReligionBook extends Book {
+public class ReligionBook extends Book implements BookInput{
 	String religiontype;
 	
 	public void setrtype(String religiontype) {
