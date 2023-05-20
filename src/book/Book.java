@@ -2,11 +2,14 @@ package book;
 
 import java.util.Scanner;
 
-public abstract class Book {
+
+
+public abstract class Book implements BookInput{
 	protected String type;
 	protected String name;
 	protected String author;
 	protected String publisher;
+	protected String genre;
 	
 	public Book(String name,String author,String publisher) {
 		this.name=name;
@@ -41,8 +44,8 @@ public abstract class Book {
 	public String getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthor(String author)  {
+		this.author=author;
 	}
 	public String getPublisher() {
 		return publisher;
@@ -50,9 +53,29 @@ public abstract class Book {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
-	
+	public void setGenre(String genre) {
+		this.genre=genre;
+	}
 	
 	public abstract void printInfo(); 
+	public void setBookName(Scanner input) {
+		input.nextLine();
+			System.out.print("Book name:");
+			String name=input.nextLine();	
+			this.setName(name);
+	}
+	public void setBookAuthor(Scanner input) {
+		
+		System.out.print("Book Author:");
+		String author=input.nextLine();
+		this.setAuthor(author);
+	}
+	public void setBookPublisher(Scanner input) {
+		
+		System.out.print("Book Publisher:");
+		String publisher=input.nextLine();
+		this.setPublisher(publisher);
+	}
 	
 	public void getBookInput(Scanner input) {
 		input.nextLine();
@@ -69,5 +92,7 @@ public abstract class Book {
 		this.setPublisher(publisher);
 	}
 	
+
+
 	
 }

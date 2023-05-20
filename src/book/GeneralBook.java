@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class GeneralBook extends Book implements BookInput{
+public class GeneralBook extends BookGenre {
 	public String etctype;
 	
 	public void setetcType(String etctype) {
@@ -14,11 +14,8 @@ public class GeneralBook extends Book implements BookInput{
 		this.etctype=etctype;
 	}
 	public void getBookInput(Scanner input) {
-		input.nextLine();
-		System.out.print("Type:");
-		String type=input.nextLine();
-		this.setType(type);
-		
+		setType("General");
+		setBookFictionYN(input);
 		System.out.println("1.Science 2.Art 3.Literature 4.Philosophy");
 		System.out.println("Select num for Book type(1 ~ 4):");
 
@@ -44,18 +41,10 @@ public class GeneralBook extends Book implements BookInput{
 			break;
 									
 		}
-		input.nextLine();			
-		System.out.print("Book name:");
-		String name=input.nextLine();	
-		this.setName(name);
-		
-		System.out.print("Book Author:");
-		String author=input.nextLine();
-		this.setAuthor(author);
-		
-		System.out.print("Book Publisher:");
-		String publisher=input.nextLine();
-		this.setPublisher(publisher);
+				
+		setBookName(input);
+		setBookAuthor(input);
+		setBookPublisher(input);
 		
 	}
 		
@@ -63,7 +52,7 @@ public class GeneralBook extends Book implements BookInput{
 		
 	public  void printInfo() {
 		
-		System.out.println("Type:"+this.type+"//Type of etc:"+this.etctype+ "//Book name:"+this.name+" //Book author:"+author +" //Book publisher:"+publisher);
+		System.out.println("Type:"+this.type+"//Genre:"+this.genre+"//Type of etc:"+this.etctype+ "//Book name:"+this.name+" //Book author:"+this.author +" //Book publisher:"+this.publisher);
 	
 	}
 

@@ -2,18 +2,16 @@ package book;
 
 import java.util.Scanner;
 
-public class LanguageBook extends Book implements BookInput{
+public class LanguageBook extends BookGenre {
 String Languagetype;
 	
 	public void setltype(String Languagetype) {
 		this.Languagetype=Languagetype;
 	}
+	
 	public void getBookInput(Scanner input) {
-		input.nextLine();
-		System.out.print("Type:");
-		String type=input.nextLine();
-		this.setType(type);
-		
+		setType("Language");
+		setBookFictionYN(input);
 		System.out.println("1.Korean 2.Chinese 3.Japanese 4.English");
 		System.out.println("Select num for Book type(1 ~ 4):");
 
@@ -39,22 +37,16 @@ String Languagetype;
 			break;
 									
 		}
-		input.nextLine();				
-		System.out.print("Book name:");
-		String name=input.nextLine();	
-		this.setName(name);
-		
-		System.out.print("Book Author:");
-		String author=input.nextLine();
-		this.setAuthor(author);
-		
-		System.out.print("Book Publisher:");
-		String publisher=input.nextLine();
-		this.setPublisher(publisher);
+		setBookName(input);
+		setBookAuthor(input);
+		setBookPublisher(input);
 	}
 public  void printInfo() {
 		
-		System.out.println("Type:"+this.type+"//Languagetype:"+this.Languagetype+ "//Book name:"+this.name+" //Book author:"+author +" //Book publisher:"+publisher);
+		System.out.println("Type:"+this.type+"//Genre:"+this.genre+"//Languagetype:"+this.Languagetype+ "//Book name:"+this.name+" //Book author:"+this.author +" //Book publisher:"+this.publisher);
 	
 	}
+
+
 }
+

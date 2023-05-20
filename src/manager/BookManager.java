@@ -10,6 +10,7 @@ import book.LanguageBook;
 import book.ReligionBook;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class BookManager {
 	ArrayList<BookInput> books=new ArrayList<BookInput>();	 	
@@ -18,9 +19,11 @@ public class BookManager {
 		this.input=input;
 	}
 	public void addBook() {
+		
 		int type=0;
 		BookInput book;
 		while(type!=1 &&type!=2&&type!=3&&type!=4) {
+			
 		System.out.println("1.for General:");
 		System.out.println("2.for ReligionBook:");
 		System.out.println("3.for LanguageBook:");
@@ -61,12 +64,19 @@ public class BookManager {
 		else {
 			System.out.print("Select num for Booktype between 1 ~ 5");
 		}
-		}				
-	}
+		}
+			
+		}
+		
+	
 	public void deleteBook() {
 		input.nextLine();
 		System.out.print("Book name:");
 		String bookname=input.nextLine();
+		int index=findIndex(bookname);	
+		removoefromBook(index,bookname);		
+}
+	public int findIndex(String bookname) {
 		int index=-1;
 		for(int i=0;i<books.size();i++) {
 			if(books.get(i).getName().equals(bookname)) {
@@ -74,52 +84,45 @@ public class BookManager {
 				break;
 			}
 		}
+		return index;
+	}
+	public int removoefromBook(int index,String bookname) {
 		if(index>=0) {
 			books.remove(index);
 			System.out.println("This book has been deleted.");
-			return;
+			return 1;
 		}
-	
-
-}
+		else {
+			System.out.println("The book has not been registered");
+			return -1;
+		}
+		
+	}
 	public void editBook() {
 		input.nextLine();
 		System.out.print("Book name:");
 		String bookname=input.nextLine();
 		for(int i=0;i<books.size();i++) {
-			BookInput bookInput=books.get(i);
-			if(bookInput.getName().equals(bookname)) {
+			BookInput book=books.get(i);
+			if(book.getName().equals(bookname)) {
 				int num=-1;
 				while(num!=4) {
-					System.out.println("--Book Info Edit Menu--");
-					System.out.println("1.Edit name");
-					System.out.println("2.Edit Author");
-					System.out.println("3.Edit Publisher");
-					System.out.println("4.Exit");
-					System.out.println("Select one number between 1~4:");
+					showEditMenu();
 					num=input.nextInt();
-			
-					if(num==1) {
-					    input.nextLine();
-						System.out.println("Book name:");
-						String name=input.nextLine();	
-						bookInput.setName(name);
-					}
-					else if(num==2) {
-						input.nextLine();
-						System.out.println("Book Author:");
-						String author=input.nextLine();
-						bookInput.setAuthor(author);
-					}
-					else if(num==3) {
-						input.nextLine();
-						System.out.println("Book Publisher:");
-						String publisher=input.nextLine();
-						bookInput.setPublisher(publisher);
-					}
-					else {
+					switch(num) {
+					case 1:
+						 book.setBookName(input);
+						break;
+					case 2:
+						book.setBookAuthor( input);
+						break;
+					case 3:
+						book.setBookPublisher( input);
+						break;
+					default:
 						continue;
-					}//if
+							
+					}
 												
 				}//while
 				break;
@@ -133,4 +136,30 @@ public class BookManager {
 			books.get(i).printInfo();
 		}
     	}
+	public void setBookName(BookInput book,Scanner input) {
+		 input.nextLine();
+			System.out.println("Book name:");
+			String name=input.nextLine();	
+			book.setName(name);
+	}
+	public void setBookAuthor(BookInput book,Scanner input) {
+		input.nextLine();
+		System.out.println("Book Author:");
+		String author=input.nextLine();
+		book.setAuthor(author);
+	}
+	public void setBookPublisher(BookInput book,Scanner input) {
+		input.nextLine();
+		System.out.println("Book Publisher:");
+		String publisher=input.nextLine();
+		book.setPublisher(publisher);
+	}
+	public void showEditMenu() {
+		System.out.println("--Book Info Edit Menu--");
+		System.out.println("1.Edit name");
+		System.out.println("2.Edit Author");
+		System.out.println("3.Edit Publisher");
+		System.out.println("4.Exit");
+		System.out.println("Select one number between 1~4:");
+	}
 }
