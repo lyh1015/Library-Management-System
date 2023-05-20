@@ -15,7 +15,7 @@ public class GeneralBook extends BookGenre {
 	}
 	public void getBookInput(Scanner input) {
 		setType("General");
-		setBookFictionYN(input);
+		setBookGenreYN(input);
 		System.out.println("1.Science 2.Art 3.Literature 4.Philosophy");
 		System.out.println("Select num for Book type(1 ~ 4):");
 

@@ -10,7 +10,7 @@ String Historytype;
 	}
 	public void getBookInput(Scanner input) {
 		setType("History");
-		setBookFictionYN(input);
+		setBookGenreYN(input);
 		System.out.println("1.Asia 2.Africa 3.America 4.Europe 5.Oceania");
 		System.out.println("Select num for Book type(1 ~ 5):");
 

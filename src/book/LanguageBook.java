@@ -11,7 +11,7 @@ String Languagetype;
 	
 	public void getBookInput(Scanner input) {
 		setType("Language");
-		setBookFictionYN(input);
+		setBookGenreYN(input);
 		System.out.println("1.Korean 2.Chinese 3.Japanese 4.English");
 		System.out.println("Select num for Book type(1 ~ 4):");
 

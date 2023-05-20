@@ -9,7 +9,7 @@ public class BookGenre extends Book {
 		// TODO Auto-generated method stub
 
 	}
-	public void setBookFictionYN(Scanner input) {
+	public void setBookGenreYN(Scanner input) {
 		char answer='x';
 		while (answer!='y'&&answer!='Y'&&answer!='n'&&answer!='N')
 		{

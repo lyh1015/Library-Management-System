@@ -12,7 +12,7 @@ public class ReligionBook extends BookGenre {
 	}
 	public void getBookInput(Scanner input) {
 		setType("Religion");
-		setBookFictionYN(input);
+		setBookGenreYN(input);
 		System.out.println("1.Buddhism 2.Christianity 3.Islam 4.Hinduism");
 		System.out.println("Select num for Book type(1 ~ 4):");
 

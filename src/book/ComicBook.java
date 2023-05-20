@@ -6,7 +6,7 @@ public class ComicBook extends BookGenre {
 	public void getBookInput(Scanner input) {
 		
 		setType("Comic");
-		setBookFictionYN(input);
+		setBookGenreYN(input);
 		setBookName(input);
 		setBookAuthor(input);
 		setBookPublisher(input);
