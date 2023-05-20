@@ -2,6 +2,8 @@ package book;
 
 import java.util.Scanner;
 
+import exception.AuthorFormatException;
+
 
 
 public abstract class Book implements BookInput{
@@ -44,7 +46,8 @@ public abstract class Book implements BookInput{
 	public String getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author)  {
+	public void setAuthor(String author)   {
+	
 		this.author=author;
 	}
 	public String getPublisher() {
@@ -64,11 +67,13 @@ public abstract class Book implements BookInput{
 			String name=input.nextLine();	
 			this.setName(name);
 	}
-	public void setBookAuthor(Scanner input) {
-		
+	public void setBookAuthor(Scanner input){
+	
 		System.out.print("Book Author:");
-		String author=input.nextLine();
+		author=input.nextLine();
 		this.setAuthor(author);
+	
+		
 	}
 	public void setBookPublisher(Scanner input) {
 		
@@ -78,18 +83,6 @@ public abstract class Book implements BookInput{
 	}
 	
 	public void getBookInput(Scanner input) {
-		input.nextLine();
-		System.out.print("Type:");
-		String type=input.nextLine();
-		System.out.print("Book name:");
-		String name=input.nextLine();	
-		this.setName(name);
-		System.out.print("Book Author:");
-		String author=input.nextLine();
-		this.setAuthor(author);
-		System.out.print("Book Publisher:");
-		String publisher=input.nextLine();
-		this.setPublisher(publisher);
 	}
 	
 

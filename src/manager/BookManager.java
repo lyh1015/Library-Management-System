@@ -8,6 +8,7 @@ import book.GeneralBook;
 import book.HistoryBook;
 import book.LanguageBook;
 import book.ReligionBook;
+import exception.AuthorFormatException;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -23,7 +24,7 @@ public class BookManager {
 		int type=0;
 		BookInput book;
 		while(type!=1 &&type!=2&&type!=3&&type!=4) {
-			
+			try {
 		System.out.println("1.for General:");
 		System.out.println("2.for ReligionBook:");
 		System.out.println("3.for LanguageBook:");
@@ -64,8 +65,15 @@ public class BookManager {
 		else {
 			System.out.print("Select num for Booktype between 1 ~ 5");
 		}
+		}catch(InputMismatchException e) {
+			System.out.println("Please put an integer between 1 ~5!(type)");
+			if(input.hasNext()) {
+				input.next();
+			}
+		     type=-1;
 		}
-			
+		}
+		
 		}
 		
 	
@@ -105,6 +113,7 @@ public class BookManager {
 		for(int i=0;i<books.size();i++) {
 			BookInput book=books.get(i);
 			if(book.getName().equals(bookname)) {
+				
 				int num=-1;
 				while(num!=4) {
 					showEditMenu();
@@ -114,7 +123,9 @@ public class BookManager {
 						 book.setBookName(input);
 						break;
 					case 2:
-						book.setBookAuthor( input);
+						
+						book.setBookAuthor(input);
+						
 						break;
 					case 3:
 						book.setBookPublisher( input);
@@ -122,8 +133,7 @@ public class BookManager {
 					default:
 						continue;
 							
-					}
-												
+					}						
 				}//while
 				break;
 			}//if			
@@ -142,7 +152,7 @@ public class BookManager {
 			String name=input.nextLine();	
 			book.setName(name);
 	}
-	public void setBookAuthor(BookInput book,Scanner input) {
+	public void setBookAuthor(BookInput book,Scanner input) throws AuthorFormatException {
 		input.nextLine();
 		System.out.println("Book Author:");
 		String author=input.nextLine();

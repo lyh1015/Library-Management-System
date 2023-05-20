@@ -2,6 +2,10 @@ package book;
 
 import java.util.Scanner;
 
+import exception.AuthorFormatException;
+
+
+
 
 
 public interface BookInput {
@@ -13,6 +17,6 @@ public interface BookInput {
 	public void setPublisher(String publisher);
 	public  void printInfo();
 	public void setBookName(Scanner input);
-	public void setBookAuthor(Scanner input);
+	public void setBookAuthor(Scanner input) ;
 	public void setBookPublisher(Scanner input);
 	}
