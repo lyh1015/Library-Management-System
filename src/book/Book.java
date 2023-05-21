@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-import exception.AuthorFormatException;
+import exception.InputEmptyException;
 
 
 
@@ -40,20 +40,28 @@ public abstract class Book implements BookInput{
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(String name) throws InputEmptyException{
+		if(name.isEmpty()) {
+			throw new InputEmptyException();
+		}
 		this.name=name;
 	}
 	public String getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author)   {
-	
+	public void setAuthor(String author) throws InputEmptyException{
+	if(author.isEmpty()) {
+		throw new InputEmptyException();
+	}
 		this.author=author;
 	}
 	public String getPublisher() {
 		return publisher;
 	}
-	public void setPublisher(String publisher) {
+	public void setPublisher(String publisher) throws InputEmptyException{
+		if(publisher.isEmpty()) {
+			throw new InputEmptyException();
+		}
 		this.publisher = publisher;
 	}
 	public void setGenre(String genre) {
@@ -62,24 +70,49 @@ public abstract class Book implements BookInput{
 	
 	public abstract void printInfo(); 
 	public void setBookName(Scanner input) {
+		String name="";
 		input.nextLine();
+		while(name.isEmpty()) {
 			System.out.print("Book name:");
-			String name=input.nextLine();	
-			this.setName(name);
+			name=input.nextLine();	
+			try{
+				this.setName(name);
+			}catch(InputEmptyException e) {
+				System.out.println("Name cannot be  empty");
+				
+			}
+		}
+	
 	}
 	public void setBookAuthor(Scanner input){
-	
-		System.out.print("Book Author:");
-		author=input.nextLine();
-		this.setAuthor(author);
-	
+        String author="";
+        while(author.isEmpty()) {
+        	System.out.print("Book Author:");
+    		author=input.nextLine();
+    		try {
+    			this.setAuthor(author);
+    		}catch(InputEmptyException e) {
+    			System.out.println("Author cannot be empty");
+    			
+    		}
+        }
 		
 	}
-	public void setBookPublisher(Scanner input) {
+	public void setBookPublisher(Scanner input){
+        String publisher="";
+        while(publisher.isEmpty()) {
+        	System.out.print("Book Publisher:");
+    		publisher=input.nextLine();
+    		try {
+    			this.setPublisher(publisher);
+    		}catch(InputEmptyException e) {
+    			System.out.println("Publisher cannot be empty");
+    			
+    		}
+        }
 		
-		System.out.print("Book Publisher:");
-		String publisher=input.nextLine();
-		this.setPublisher(publisher);
+	
+		
 	}
 	
 	public void getBookInput(Scanner input) {

@@ -8,7 +8,7 @@ import book.GeneralBook;
 import book.HistoryBook;
 import book.LanguageBook;
 import book.ReligionBook;
-import exception.AuthorFormatException;
+import exception.InputEmptyException;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -146,19 +146,19 @@ public class BookManager {
 			books.get(i).printInfo();
 		}
     	}
-	public void setBookName(BookInput book,Scanner input) {
+	public void setBookName(BookInput book,Scanner input) throws InputEmptyException {
 		 input.nextLine();
 			System.out.println("Book name:");
 			String name=input.nextLine();	
 			book.setName(name);
 	}
-	public void setBookAuthor(BookInput book,Scanner input) throws AuthorFormatException {
+	public void setBookAuthor(BookInput book,Scanner input) throws InputEmptyException {
 		input.nextLine();
 		System.out.println("Book Author:");
 		String author=input.nextLine();
 		book.setAuthor(author);
 	}
-	public void setBookPublisher(BookInput book,Scanner input) {
+	public void setBookPublisher(BookInput book,Scanner input) throws InputEmptyException {
 		input.nextLine();
 		System.out.println("Book Publisher:");
 		String publisher=input.nextLine();
