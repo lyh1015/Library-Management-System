@@ -10,12 +10,17 @@ import book.LanguageBook;
 import book.ReligionBook;
 import exception.InputEmptyException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
-public class BookManager {
+public class BookManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2193043882918485186L;
 	ArrayList<BookInput> books=new ArrayList<BookInput>();	 	
-	Scanner input;
+	transient Scanner input;
 	BookManager(Scanner input){
 		this.input=input;
 	}
