@@ -4,12 +4,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-public class MenuSelection extends JFrame {
 
-	MenuSelection(){
-		this.setSize(300,300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+import listener.ButtonAddListener;
+import listener.ButtonViewListener;
+
+import java.awt.BorderLayout;
+public class MenuSelection extends JPanel {
+	
+	WindowFrame frame;
+
+	
+	public MenuSelection(WindowFrame frame){
+		this.frame=frame;
+		this.setLayout(new BorderLayout());
+		
 		JPanel p1=new JPanel();
 		JPanel p2=new JPanel();
 		JLabel label=new JLabel("Menu Selection");
@@ -18,6 +26,9 @@ public class MenuSelection extends JFrame {
 		JButton b3=new JButton("Edit Book");
 		JButton b4=new JButton("View Book");
 		JButton b5=new JButton("Exit Program");
+		
+		b1.addActionListener(new ButtonAddListener(frame));
+		b4.addActionListener(new ButtonViewListener(frame));
 		
 		p1.add(label);
 		p2.add(b1);
@@ -28,6 +39,6 @@ public class MenuSelection extends JFrame {
 		
 		this.add(p1,BorderLayout.NORTH);
 		this.add(p2,BorderLayout.CENTER);
-		this.setVisible(true);
+		
 	}
 }

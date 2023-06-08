@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -18,10 +19,14 @@ public class MenuManager {
 		
 		Scanner input=new Scanner(System.in);
 		BookManager bookManager=getObject("bookmanager.ser");
+		
 		if(bookManager==null) {
+			
 			bookManager=new BookManager(input);
 		}
 
+		
+		WindowFrame frame=new WindowFrame(bookManager);
 	    selectMenu(input,bookManager);
 	    putObject(bookManager,"bookmanager.ser");
 	
@@ -77,7 +82,8 @@ public static void putObject(BookManager bookManager,String filename) {
 	}
 }
 public static void selectMenu(Scanner input,BookManager bookManager) {
-	int num=0;				
+	int num=0;			
+
 	while(num!=5) {
 		try {
 		showMenu();
@@ -85,19 +91,19 @@ public static void selectMenu(Scanner input,BookManager bookManager) {
 	switch(num) {
 	case 1:
 		bookManager.addBook();
-		logger.log("add a student");
+		logger.log("add a book");
 		break;
 	case 2:
 		bookManager.deleteBook();
-		logger.log("delete a student");
+		logger.log("delete a book");
 		break;
 	case 3:
 		bookManager.editBook();
-		logger.log("edit a student");
+		logger.log("edit a book");
 		break;
 	case 4:
 		bookManager.viewBook();
-		logger.log("view a student");
+		logger.log("view a book");
 		break;
 		default:
 			continue;

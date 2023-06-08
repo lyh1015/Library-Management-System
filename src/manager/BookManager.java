@@ -169,6 +169,12 @@ public class BookManager implements Serializable{
 		String publisher=input.nextLine();
 		book.setPublisher(publisher);
 	}
+	public int size() {
+		return books.size();
+	}
+	public BookInput get(int index) {
+		return (Book) books.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println("--Book Info Edit Menu--");
 		System.out.println("1.Edit name");
